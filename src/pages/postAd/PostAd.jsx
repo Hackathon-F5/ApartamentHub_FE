@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../../pages/postAd/PostAd';
 import './PostAd.css';
 
 

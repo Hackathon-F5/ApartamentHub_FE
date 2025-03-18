@@ -1,5 +1,5 @@
 import React from 'react';
-import ApartmentCard from '../components/ApartmentCard';
+import ApartmentCard from '../../components/apartmentCard/ApartmentCard';
 import './HomePage.css';
 
 const apartments = [
