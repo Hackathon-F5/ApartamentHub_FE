@@ -1,8 +1,6 @@
 import React from "react";
 // import { useState } from 'react';
-import { ChevronLeft } from "lucide-react";
 import Input from "../input/Input";
-import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
 export const PostForm = () => {
@@ -15,17 +13,8 @@ export const PostForm = () => {
   //   console.log({ title, description, price });
   // };
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link to="/"
-        className="inline-flex items-center text-[#00FFFF] hover:text-[#00CCFF] mb-6"
-      >
-        <ChevronLeft className="mr-2 h-4 w-4" /> Back to listings
-      </Link>
-
-
-
-
-      <div className="rounded-lg border text-card-foreground max-w-3xl mx-auto bg-[#1E1E1E] border-[#333333] shadow-lg">
+    <>
+      <div className="rounded border text-card-foreground max-w-3xl mx-auto bg-[#1E1E1E] border-[#333333] shadow-lg">
         <header className="flex flex-col space-y-1.5 p-6 bg-gradient-to-r from-[#1E1E1E] to-[#252525] border-b border-[#333333]">
           <h3 className="font-semibold tracking-tight text-2xl text-white">Post Your Apartment</h3>
           <p className="text-sm text-[#D3D3D3]">
@@ -269,7 +258,7 @@ export const PostForm = () => {
           </Button>
         </footer>
       </div>
-    </div>
+      </>
   );
 };
 

@@ -1,12 +1,11 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
 import ContactForm from "../../components/contactForm/ContactForm";
+import { BackButton } from "../../components/backButton/BackButton";
 
 function ApartmentDetail() {
-  // const { id } = useParams();
-
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 pt-28">
+      <BackButton />
       <ContactForm />
     </div>
   );
