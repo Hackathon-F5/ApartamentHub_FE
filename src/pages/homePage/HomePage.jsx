@@ -1,6 +1,7 @@
 import React from 'react';
 import ApartmentCard from '../../components/apartmentCard/ApartmentCard';
-import './HomePage.css';
+// import './HomePage.css';
+import HeroSection from '../../components/heroSection/HeroSection'
 
 const apartments = [
   { id: 1, title: "Apartamento Moderno", description: "Luminoso, con vistas al parque", price: 1200, image: "https://via.placeholder.com/300x200?text=Apartamento+1" },
@@ -11,6 +12,7 @@ const apartments = [
 function HomePage() {
   return (
     <div>
+      <HeroSection/>
       <h1>Apartment Marketplace</h1>
       <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>
         {apartments.map(apartment => (
