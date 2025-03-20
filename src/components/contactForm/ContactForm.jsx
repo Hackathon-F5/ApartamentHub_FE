@@ -88,7 +88,7 @@ function ContactForm() {
             <div className="grid gap-2 relative">
               <label htmlFor="fullName" className="text-[#D3D3D3]">Full name:</label>
               <input
-                className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+                className="w-full p-2 border border-gray-500 rounded-md bg-[#252525] text-white placeholder-gray-400 focus:border-[#00FFFF] focus:outline-none"
                 name="fullName"
                 type="text"
                 placeholder="Full Name"
@@ -102,7 +102,7 @@ function ContactForm() {
             <div className="grid gap-2 relative">
               <label htmlFor="phone" className="text-[#D3D3D3]">Phone number:</label>
               <input
-                className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+                className="w-full p-2 border border-gray-500 rounded-md bg-[#252525] text-white placeholder-gray-400 focus:border-[#00FFFF] focus:outline-none"
                 name="phone"
                 type="tel"
                 placeholder="Phone Number"
@@ -117,7 +117,7 @@ function ContactForm() {
           <div className="grid gap-2 relative">
             <label htmlFor="email" className="text-[#D3D3D3]">Email:</label>
             <input
-              className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+              className="w-full p-2 border border-gray-500 rounded-md bg-[#252525] text-white placeholder-gray-400 focus:border-[#00FFFF] focus:outline-none"
               name="email"
               type="email"
               placeholder="Email"
@@ -131,10 +131,11 @@ function ContactForm() {
           <div className="grid gap-2 relative">
             <label htmlFor="aboutMe" className="text-[#D3D3D3]">Message:</label>
             <textarea
-              className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500 min-h-[120px]"
+              className="w-full p-2 border border-gray-500 rounded-md bg-[#252525] text-white placeholder-gray-400 focus:border-[#00FFFF] focus:outline-none min-h-[120px]"
               name="aboutMe"
               rows="5"
               id="aboutMe"
+              placeholder="Write your message..."
               value={formData.aboutMe}
               onChange={handleChange}
             />
