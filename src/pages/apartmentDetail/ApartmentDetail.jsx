@@ -7,9 +7,9 @@ function ApartmentDetail() {
   // const { id } = useParams();
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <ContactForm />
-    </main>
+    </div>
   );
 }
 
