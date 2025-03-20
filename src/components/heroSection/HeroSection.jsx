@@ -8,7 +8,7 @@ import Search from "../search/Search";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[100vh] min-h-[600px] w-full">
+    <section className="relative h-[100vh] min-h-[600px] w-full mt-24 md:mt-0">
       <div className="absolute inset-0 bg-black/70 z-10"></div>
       <div
         className="absolute inset-0 bg-cover bg-center"
