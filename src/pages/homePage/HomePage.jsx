@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Header from '../../components/header/Header';
+
 import ListingsSection from '../../components/listingSection/ListingsSection'; 
-import Footer from '../../components/footer/footer';
+import HeroSection from '../../components/heroSection/HeroSection';
 
 function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#121212]">
-     
-      <ListingsSection />
+     <HeroSection/>
+      <ListingsSection id="listing"/>
      
     </div>
   );

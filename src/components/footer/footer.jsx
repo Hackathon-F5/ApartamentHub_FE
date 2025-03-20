@@ -28,12 +28,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-[#00FFFF] hover:text-[#00CCFF]">
+                <Link to="/" className="text-[#00FFFF] hover:text-[#00CCFF]">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-[#00FFFF] hover:text-[#00CCFF]">
+                <Link to="/" className="text-[#00FFFF] hover:text-[#00CCFF]">
                   Contact
                 </Link>
               </li>
@@ -44,7 +44,7 @@ const Footer = () => {
             <p className="text-[#D3D3D3]">
               Have questions? Reach out to our support team.
             </p>
-            <Link to="/contact">
+            <Link to="/">
               <Button className="mt-4 bg-[#00FFFF] hover:bg-[#00CCFF] text-black font-medium shadow-[0_0_10px_rgba(0,255,255,0.3)]">
                 Contact Support
               </Button>

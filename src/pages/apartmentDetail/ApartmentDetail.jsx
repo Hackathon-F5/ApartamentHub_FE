@@ -1,6 +1,5 @@
 import React from "react";
 // import { useParams } from "react-router-dom";
-import "./ApartmentDetail.css";
 import ContactForm from "../../components/contactForm/ContactForm";
 
 function ApartmentDetail() {
