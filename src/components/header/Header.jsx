@@ -17,7 +17,7 @@ const Header = () => {
             to="/"
             className="text-3xl font-bold bg-gradient-to-r from-[#00FFFF] to-[#00CCFF] bg-clip-text text-transparent"
           >
-            ApartmentHub
+            FairRent
           </Link>
 
           {isHome && (
