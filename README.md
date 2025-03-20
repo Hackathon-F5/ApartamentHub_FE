@@ -1,70 +1,185 @@
-# Getting Started with Create React App
+# FairRent
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Everybody deserves a HOME
 
-## Available Scripts
+## Descripción
 
-In the project directory, you can run:
+FairRent es una plataforma diseñada para facilitar el alquiler de pisos y apartamentos, enfocada en apoyar a personas que enfrentan barreras para encontrar un hogar. Como dice nuestro lema: "Everybody deserves a HOME. Público: jóvenes, inmigrantes, sacando a las inmobiliarias de la ecuación." Nos dirigimos a comunidades autónomas y ofrecemos precios máximos accesibles, optando por el inglés como idioma principal para que extranjeros también puedan optar por esta solución en España.
 
-### `npm start`
+Nuestra misión es conectar directamente a propietarios y arrendatarios, eliminando intermediarios. Además, ofrecemos una funcionalidad para cambiar el idioma, asegurando que tanto locales como extranjeros puedan navegar fácilmente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Características principales
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Listado de apartamentos:** Visualiza apartamentos disponibles con detalles como precio (en euros), ubicación, descripción, etiquetas (tags), y más.
+- **Filtrado y búsqueda:** Permite filtrar por ubicación y etiquetas para encontrar el apartamento ideal.
+- **Publicación de anuncios:** Los propietarios pueden publicar sus apartamentos de manera sencilla.
+- **Diseño responsivo:** Construido con Tailwind CSS para una experiencia fluida en todos los dispositivos.
+- **Integración con backend:** Se conecta con un backend en Laravel para gestionar los datos de los apartamentos.
+- **Soporte multilingüe:** Opción para cambiar el idioma(Proximamente) (inglés por defecto).
 
-### `npm test`
+## Tecnologías utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React:** Biblioteca para construir la interfaz de usuario.
+- **Vite:** Herramienta de construcción rápida para el desarrollo frontend.
+- **Tailwind CSS:** Framework de estilos utilitarios para un diseño moderno y responsivo.
+- **React Router:** Para la navegación entre páginas.
+- **Axios:** Para realizar peticiones HTTP al backend.
+- **Lucide React:** Biblioteca de íconos ligeros y personalizables.
 
-### `npm run build`
+## Requisitos previos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Antes de comenzar, asegúrate de tener instalado:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node.js:** Versión 18.x o superior. Descarga desde [nodejs.org](https://nodejs.org/).
+- **Git:** Para clonar el repositorio. Descarga desde [git-scm.com](https://git-scm.com/).
+- **Backend de Laravel:** Asegúrate de que el backend esté configurado y corriendo en `http://127.0.0.1:8000`. Consulta el repositorio del backend para más detalles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalación
 
-### `npm run eject`
+Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/Hackathon-F5/ApartamentHub_FE.git
+   cd ApartamentHub_FE
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Instalar dependencias**
+   Instala todas las dependencias necesarias con npm:
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Configurar Tailwind CSS (si no está configurado)**
+   Asegúrate de que Tailwind CSS esté configurado correctamente:
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
+   Edita el archivo `tailwind.config.js` para incluir tus archivos:
+   ```js
+   module.exports = {
+     content: ['./src/**/*.{js,jsx,ts,tsx}'],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+   ```
+   Asegúrate de que `src/index.css` incluya las directivas de Tailwind:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Instalar dependencias adicionales**
+   El proyecto utiliza varias bibliotecas adicionales. Instálalas si no se instalaron automáticamente:
+   ```bash
+   npm install react-router-dom axios lucide-react
+   ```
 
-## Learn More
+5. **Configurar la conexión con el backend**
+   El frontend se conecta al backend de Laravel en `http://127.0.0.1:8000`. Asegúrate de que el backend esté corriendo:
+   ```bash
+   # En el directorio del backend
+   php artisan serve
+   ```
+   Si el backend utiliza un puerto o URL diferente, ajusta las peticiones en los componentes (por ejemplo, en `ListingsSection.jsx`).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. **Ejecutar el proyecto**
+   Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+   Abre tu navegador en [http://localhost:3000](http://localhost:3000) para ver la aplicación.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Estructura del proyecto
 
-### Code Splitting
+```plaintext
+ApartamentHub_FE/
+├── src/
+│   ├── components/
+│   │   ├── apartmentCard/
+│   │   │   └── ApartmentCard.jsx   # Tarjeta individual de apartamento
+│   │   ├── listingsSection/
+│   │   │   └── ListingsSection.jsx # Sección de listados destacados
+│   │   ├── header/
+│   │   │   └── Header.jsx          # Encabezado con navegación
+│   │   ├── footer/
+│   │   │   └── Footer.jsx          # Pie de página
+│   │   ├── heroSection/
+│   │   │   └── HeroSection.jsx     # Sección hero de la página de inicio
+│   │   ├── Button.jsx              # Componente de botón reutilizable
+│   │   └── Badge.jsx               # Componente de etiquetas (tags)
+│   ├── pages/
+│   │   ├── homePage/
+│   │   │   └── HomePage.jsx        # Página principal
+│   │   ├── apartmentDetail/
+│   │   │   └── ApartmentDetail.jsx # Página de detalles de un apartamento
+│   │   ├── postAd/
+│   │   │   └── PostAd.jsx          # Página para publicar un anuncio
+│   ├── App.jsx                     # Componente raíz con enrutamiento
+│   ├── main.jsx                    # Punto de entrada
+│   └── index.css                   # Estilos globales con Tailwind
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Uso
 
-### Analyzing the Bundle Size
+- **Página principal (`/`):**  
+  Muestra un encabezado, una sección hero y los listados destacados de apartamentos.  
+  Los apartamentos se obtienen del backend mediante la petición `GET api/apartment`.  
+  Incluye filtros por ubicación y etiquetas, y muestra etiquetas populares.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Detalles del apartamento (`/apartments/:id`):**  
+  Muestra información detallada de un apartamento específico mediante `GET api/apartment/{id}`.
 
-### Making a Progressive Web App
+- **Publicar un anuncio (`/post-ad`):**  
+  Permite a los propietarios publicar un nuevo apartamento utilizando `POST api/apartment`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Cambio de idioma:**  
+  *(Pendiente de implementar)* Se añadirá un botón o selector en el Header para cambiar entre inglés y otros idiomas.
 
-### Advanced Configuration
+## Solución de problemas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Error de CORS:**  
+  Si el frontend no puede conectar con el backend, asegúrate de que éste tenga configurado CORS. Para ello, instala `fruitcake/laravel-cors` en el backend:
+  ```bash
+  composer require fruitcake/laravel-cors
+  ```
+  Luego, publica la configuración y ajusta el archivo `config/cors.php` según sea necesario.
 
-### Deployment
+- **No se cargan los datos:**  
+  - Verifica que el backend esté corriendo en `http://127.0.0.1:8000`.
+  - Revisa la consola del navegador para identificar errores de red.
+  - Asegúrate de que el endpoint `GET api/apartment` esté devolviendo datos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contribución
+
+1. Clona el repositorio y crea una nueva rama:
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
+
+2. Realiza tus cambios y haz commit:
+   ```bash
+   git commit -m "feat: Descripción de la nueva funcionalidad"
+   ```
+
+3. Envía un pull request para revisión.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Documentación adicional
+
+Para obtener información adicional y detalles sobre el funcionamiento del proyecto, revisa la [documentación en Atlassian](https://gaviriayeferson2.atlassian.net/wiki/spaces/HA/overview?homepageId=31097112).
+
+## Contacto
+
+Si tienes preguntas o necesitas soporte, contáctanos a través del repositorio en GitHub .
