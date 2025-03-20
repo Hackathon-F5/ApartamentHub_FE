@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -118,6 +119,7 @@ function ApartmentDetail() {
       </div>
       {/* Formulario de contacto */}
       <ContactForm apartmentId={id} onSubmit={handleContactSubmit} />
+
     </div>
   );
 }
