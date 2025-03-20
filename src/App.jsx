@@ -4,7 +4,6 @@ import HomePage from "./pages/homePage/HomePage";
 import ApartmentDetail from "./pages/apartmentDetail/ApartmentDetail";
 import PostAd from "./pages/postAd/PostAd";
 import Footer from "./components/footer/footer";
-import "./App.css";
 import Header from "./components/header/Header";
 
 

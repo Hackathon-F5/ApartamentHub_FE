@@ -4,24 +4,24 @@ import { MapPin } from 'lucide-react';
 import Badge from '../badge/Badge'; 
 
 function ApartmentCard({ apartment }) {
-  // Mapear campos del backend a los esperados por el componente
+ 
   const mappedApartment = {
     id: apartment.id,
-    title: apartment.name, // 'name' del backend -> 'title'
+    title: apartment.name, 
     description: apartment.description,
-    price: apartment.price || 0, // Precio ahora está en el seeder
-    image: apartment.pictures && apartment.pictures.length > 0 ? apartment.pictures[0].url : '/placeholder.svg', // Primera imagen
-    location: apartment.address, // 'address' -> 'location'
-    tags: apartment.tags ? apartment.tags.map(tag => tag.name) : [], // Extraer nombres de los tags
-    size: apartment.size || null, // Tamaño ahora está en el seeder
-    type: apartment.type || 'Apartment', // Default a 'Apartment'
-    availableFrom: apartment.availability ? 'Now' : 'Not Available', // Basado en 'availability'
+    price: Math.round(apartment.price / 1000) || 0,
+    image: apartment.pictures && apartment.pictures.length > 0 ? apartment.pictures[0].url : '/placeholder.svg', 
+    location: apartment.address, 
+    tags: apartment.tags ? apartment.tags.map(tag => tag.name) : [], 
+    size: apartment.size || null, 
+    type: apartment.type || 'Apartment', 
+    availableFrom: apartment.availability ? 'Now' : 'Not Available',
   };
 
   return (
     <Link to={`/apartments/${mappedApartment.id}`}>
       <div className="overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:-translate-y-1 h-full flex flex-col bg-[#1E1E1E] border border-[#333333] rounded-lg">
-        {/* Imagen y precio */}
+       
         <div className="relative h-48 w-full">
           <img
             src={mappedApartment.image}
@@ -33,7 +33,7 @@ function ApartmentCard({ apartment }) {
           </div>
         </div>
 
-        {/* Contenido */}
+       
         <div className="pt-4 flex-grow px-4">
           <h3 className="font-bold text-lg mb-2 line-clamp-1 text-white">{mappedApartment.title}</h3>
           <div className="flex items-center text-[#D3D3D3] text-sm mb-3">
@@ -60,7 +60,7 @@ function ApartmentCard({ apartment }) {
           </div>
         </div>
 
-        {/* Pie de página */}
+      
         <div className="border-t border-[#333333] pt-3 px-4 pb-4 text-sm text-[#D3D3D3]">
           {mappedApartment.size ? `${mappedApartment.size} m²` : 'N/A'} • {mappedApartment.type} • Available {mappedApartment.availableFrom}
         </div>

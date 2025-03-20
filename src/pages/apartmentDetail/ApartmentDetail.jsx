@@ -33,21 +33,7 @@ function ApartmentDetail() {
       email: formData.email,
       message: formData.message,
     });
-    // Aquí  añadiremos una solicitud al backend para enviar el mensaje
-    /*
-    axios.post('http://127.0.0.1:8000/api/contact', {
-      apartment_id: id,
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-    })
-      .then(response => {
-        console.log('Message sent:', response.data);
-      })
-      .catch(err => {
-        console.error('Error sending message:', err);
-      });
-    */
+    
   };
 
   if (loading) return <div className="text-white text-center">Loading...</div>;
@@ -57,7 +43,7 @@ function ApartmentDetail() {
   const mappedApartment = {
     title: apartment.name,
     description: apartment.description,
-    price: apartment.price,
+    price: Math.round(apartment.price / 1000) || 0,
     image: apartment.pictures && apartment.pictures.length > 0 ? apartment.pictures[0].url : '/placeholder.svg',
     location: apartment.address,
     tags: apartment.tags ? apartment.tags.map(tag => tag.name) : [],
@@ -70,14 +56,14 @@ function ApartmentDetail() {
 
     <div className="container mx-auto px-4 py-12 text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Imagen principal */}
+       
         <div>
           <img
             src={mappedApartment.image}
             alt={mappedApartment.title}
             className="w-full h-96 object-cover rounded-lg"
           />
-          {/* Galería de imágenes adicionales */}
+          
           {apartment.pictures && apartment.pictures.length > 1 && (
             <div className="flex gap-2 mt-4">
               {apartment.pictures.slice(1).map((picture, index) => (
@@ -92,7 +78,7 @@ function ApartmentDetail() {
           )}
         </div>
 
-        {/* Detalles */}
+    
         <div>
           <h1 className="text-3xl font-bold mb-4">{mappedApartment.title}</h1>
           <div className="flex items-center text-[#D3D3D3] text-lg mb-4">
@@ -118,7 +104,7 @@ function ApartmentDetail() {
           </div>
         </div>
       </div>
-      {/* Formulario de contacto */}
+ 
       <ContactForm apartmentId={id} onSubmit={handleContactSubmit} />
 
     </div>

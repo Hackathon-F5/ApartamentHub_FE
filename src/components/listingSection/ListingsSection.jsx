@@ -30,7 +30,7 @@ function ListingsSection() {
   
     return (
       <main className="container mx-auto px-4 py-12" id="listings">
-        {/* Sección de listados destacados */}
+       
         <section className="mb-10">
           <div className="flex flex-col md:flex-row justify-between items-center mb-6">
             <h2 className="text-3xl font-bold text-white">Featured Listings</h2>
@@ -55,7 +55,7 @@ function ListingsSection() {
           </div>
         </section>
   
-        {/* Sección para propietarios */}
+       
         <section className="bg-gradient-to-r from-[#1E1E1E] to-[#252525] rounded-xl p-8 text-white mb-10 shadow-lg border border-[#333333]">
           <h2 className="text-2xl font-bold mb-4">Are you a property owner?</h2>
           <p className="mb-6 text-[#D3D3D3]">
@@ -68,7 +68,7 @@ function ListingsSection() {
           </Link>
         </section>
   
-        {/* Sección de etiquetas populares */}
+     
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6 text-white">Popular Tags</h2>
           <div className="flex flex-wrap gap-2">

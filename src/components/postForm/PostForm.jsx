@@ -1,17 +1,9 @@
 import React from "react";
-// import { useState } from 'react';
 import Input from "../input/Input";
 import Button from "../button/Button";
 
 export const PostForm = () => {
-  // const [title, setTitle] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [price, setPrice] = useState('');
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log({ title, description, price });
-  // };
   return (
     <>
       <div className="rounded border text-card-foreground max-w-3xl mx-auto bg-[#1E1E1E] border-[#333333] shadow-lg">

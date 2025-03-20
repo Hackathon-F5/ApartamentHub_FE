@@ -1,4 +1,4 @@
-// src/components/Search.jsx
+
 import React from 'react';
 
 const Search = ({ className = '', size = 24, ...props }) => {
