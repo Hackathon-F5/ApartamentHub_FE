@@ -1,16 +1,15 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import './ApartmentDetail.css';
+import React from "react";
+// import { useParams } from "react-router-dom";
+import "./ApartmentDetail.css";
+import ContactForm from "../../components/contactForm/ContactForm";
 
 function ApartmentDetail() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   return (
-    <div>
-      <h1>Detalle del Apartamento</h1>
-      <p>ID: {id}</p>
-      <p>Información detallada del apartamento...</p>
-    </div>
+    <main className="container mx-auto px-4 py-8">
+      <ContactForm />
+    </main>
   );
 }
 
