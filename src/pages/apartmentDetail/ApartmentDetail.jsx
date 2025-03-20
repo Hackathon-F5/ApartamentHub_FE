@@ -67,6 +67,7 @@ function ApartmentDetail() {
   };
 
   return (
+
     <div className="container mx-auto px-4 py-12 text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Imagen principal */}

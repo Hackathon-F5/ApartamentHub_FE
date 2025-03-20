@@ -10,7 +10,7 @@ const Header = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#1E1E1E] border-b border-[#333333] shadow-lg z-50">
+    <header className="md:static fixed top-0 left-0 w-full bg-[#1E1E1E] border-b border-[#333333] shadow-lg z-50">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <Link
