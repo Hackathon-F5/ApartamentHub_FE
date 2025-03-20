@@ -8,7 +8,7 @@ import Search from "../search/Search";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full">
+    <section className="relative h-[100vh] min-h-[600px] w-full">
       <div className="absolute inset-0 bg-black/70 z-10"></div>
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -47,14 +47,15 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="absolute bottom-8 flex justify-center w-full z-20 animate-bounce">
-        <Link to="#listings">
-          <Button
-            variant="ghost"
-            className=" rounded-full bg-[#1E1E1E]/30 hover:bg-[#1E1E1E]/50 text-[#00FFFF] border border-[#00FFFF]/30 shadow-[0_0_10px_rgba(0,255,255,0.2)]"
-          >
-            <ChevronDown size={24} />
-          </Button>
-        </Link>
+        <Button
+          variant="ghost"
+          className="rounded-full bg-[#1E1E1E]/30 hover:bg-[#1E1E1E]/50 text-[#00FFFF] border border-[#00FFFF]/30 shadow-[0_0_10px_rgba(0,255,255,0.2)]"
+          onClick={() => {
+            document.getElementById("listings").scrollIntoView({ behavior: "smooth" }) 
+          }}
+        >
+          <ChevronDown size={24} />
+        </Button>
       </div>
     </section>
   );
