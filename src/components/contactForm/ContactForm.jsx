@@ -1,149 +1,149 @@
-// import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-// import "./ContactForm.css";
+import React, { useState } from "react";
 
 function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm();
-  const onSubmit = async (data) => {
-    try {
-      //simular que hace una petición de enviar el formulario (postear con fetch)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(data); //en vez de esto habría que mandarlos a un servidor
-    } catch (error) {
-      setError("root", {
-        message: "There was a problem in your submission. Try again.",
-      });
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    aboutMe: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+ 
+  const sanitizeInput = (input) => {
+    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+  };
+
+ 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: sanitizeInput(value) });
+  };
+
+ 
+  const validateForm = () => {
+    let errors = {};
+
+    if (!formData.fullName.trim()) {
+      errors.fullName = "⚠ Name is required.";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.fullName.trim())) {
+      errors.fullName = "⚠ Only letters are allowed.";
     }
+
+    if (!formData.email.trim()) {
+      errors.email = "⚠ Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errors.email = "⚠ Enter a valid email address.";
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = "⚠ Phone number is required.";
+    } else if (!/^(?:\+34|0034|34)?[6789]\d{8}$/.test(formData.phone.trim())) {
+      errors.phone = "⚠ Invalid Spanish phone number.";
+    }
+
+    if (formData.aboutMe.length > 500) {
+      errors.aboutMe = "⚠ Maximum length is 500 characters.";
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("Form submitted:", formData);
+      alert("Message sent successfully!");
+      
+      
+      setFormData({ fullName: "", phone: "", email: "", aboutMe: "" });
+      setErrors({});
+    } catch (error) {
+      setErrors({ root: "⚠ There was a problem. Try again later." });
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
-    <div class="bg-[#1E1E1E] rounded-xl shadow-lg shadow-black/50 overflow-hidden mb-8 border border-[#333333]">
-      <div class="p-6">
-        <h2 class="text-2xl font-bold mb-6 text-white">
+    <div className="bg-[#1E1E1E] rounded-xl shadow-lg shadow-black/50 overflow-hidden mb-8 border border-[#333333]">
+      <div className="p-6">
+        <h2 className="text-2xl font-bold mb-6 text-white">
           Contact About This Property
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="grid gap-2 relative">
-              <label htmlFor="full-name" className="text-[#D3D3D3]">
-                {" "}
-                Full name:{" "}
-              </label>
-
+              <label htmlFor="fullName" className="text-[#D3D3D3]">Full name:</label>
               <input
-                className="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-[#333333] focus:border-[#00FFFF] bg-[#252525] text-white placeholder:text-gray-500"
-                {...register("fullName", {
-                  required: "Full name is required",
-                  minLength: {
-                    value: 2,
-                    message: "Full name must be at least 2 characters",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z]+$/,
-                    message: "Only letters are allowed",
-                  },
-                })}
+                className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+                name="fullName"
                 type="text"
                 placeholder="Full Name"
-                id="full-name"
+                id="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
               />
-
-              {errors.fullName && (
-                <p className="text-red-500 text-sm absolute bottom-[-20px] left-0">
-                  {errors.fullName.message}
-                </p>
-              )}
+              {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
             </div>
+
             <div className="grid gap-2 relative">
-              <label htmlFor="phone" className="text-[#D3D3D3]">
-                Phone number:
-              </label>
+              <label htmlFor="phone" className="text-[#D3D3D3]">Phone number:</label>
               <input
-                className="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-[#333333] focus:border-[#00FFFF] bg-[#252525] text-white placeholder:text-gray-500"
-                {...register("phone", {
-                  required: "Phone number is required",
-                  pattern: {
-                    value: /^(?:\+34|0034|34)?[6789]\d{8}$/,
-                    message: "Invalid Spanish phone number",
-                  },
-                })}
+                className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+                name="phone"
                 type="tel"
                 placeholder="Phone Number"
                 id="phone"
+                value={formData.phone}
+                onChange={handleChange}
               />
-
-              {errors.phone && (
-                <p className="text-red-500 text-sm absolute bottom-[-20px] left-0">
-                  {errors.phone.message}
-                </p>
-              )}
+              {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
             </div>
           </div>
+
           <div className="grid gap-2 relative">
-            <label htmlFor="email" className="text-[#D3D3D3]">
-              Email:
-            </label>
+            <label htmlFor="email" className="text-[#D3D3D3]">Email:</label>
             <input
-              className="flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-[#333333] focus:border-[#00FFFF] bg-[#252525] text-white placeholder:text-gray-500"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                  message: "Invalid email address",
-                },
-              })}
+              className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500"
+              name="email"
               type="email"
               placeholder="Email"
               id="email"
+              value={formData.email}
+              onChange={handleChange}
             />
-            {errors.email ? (
-              <p className="text-red-500 text-sm absolute bottom-[-20px] left-0">
-                {errors.email.message}
-              </p>
-            ) : null}
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
           </div>
-          <div className="grid gap-2 relative">
-            <label htmlFor="about-me" className="text-[#D3D3D3]">
-              Message:{" "}
-            </label>
-            <textarea
-              className= "flex w-full rounded-md border px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[120px] border-[#333333] focus:border-[#00FFFF] bg-[#252525] text-white placeholder:text-gray-500" 
-              {...register("aboutMe", {
-                maxLength: {
-                  value: 500,
-                  message: "Maximum length is 500 characters",
-                },
-              })}
-              placeholder="I'm interested in this apartment and would like to schedule a viewing."
-              rows="5"
-              id="about-me"
-            />
-          </div>
-          {errors.aboutMe && (
-            <p className="text-red-500 text-sm absolute bottom-[-20px] left-0">
-              {errors.aboutMe.message}
-            </p>
-          )}
 
-          <button
-            disabled={isSubmitting}
-            type="submit"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 w-full bg-[#00FFFF] hover:bg-[#00CCFF] text-black font-medium shadow-[0_0_10px_rgba(0,255,255,0.3)]"
-          >
+          <div className="grid gap-2 relative">
+            <label htmlFor="aboutMe" className="text-[#D3D3D3]">Message:</label>
+            <textarea
+              className="w-full p-2 border border-gray-300 rounded-md bg-white text-black placeholder-gray-500 min-h-[120px]"
+              name="aboutMe"
+              rows="5"
+              id="aboutMe"
+              value={formData.aboutMe}
+              onChange={handleChange}
+            />
+            {errors.aboutMe && <p className="text-red-500 text-sm">{errors.aboutMe}</p>}
+          </div>
+
+          <button disabled={isSubmitting} type="submit" className="w-full bg-[#00FFFF] hover:bg-[#00CCFF] text-black font-medium rounded-md p-2 shadow-md">
             {isSubmitting ? "Loading..." : "Submit"}
           </button>
-          {errors.root ? (
-            <p className="text-red-500 text-sm mt-1">{errors.root.message}</p>
-          ) : null}
-
-
-
-
         </form>
       </div>
     </div>

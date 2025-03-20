@@ -12,12 +12,13 @@ function App() {
   return (
     <>
     <Header />
-    <HeroSection />
+    <main>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/apartments/:id" element={<ApartmentDetail />} />
       <Route path="/post-ad" element={<PostAd />} />
     </Routes>
+    </main>
     <Footer />
     </>
   );
